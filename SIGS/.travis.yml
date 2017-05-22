@@ -16,8 +16,7 @@ rvm:
 notifications:
   email:
     recipients:
-    - gesiel.was.f@gmail.com
-    - vitorbertulucci@hotmail.com
+    - mendesiasmin96@gmail.com
 branches:
   only:
   - master
