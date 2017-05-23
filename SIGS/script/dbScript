@@ -1,8 +1,0 @@
-#!/bin/bash
-
-rake db:drop
-rake db:create
-rake db:migrate
-echo "Filling the database..."
-rake db:seed
-echo "Restored database completed!"

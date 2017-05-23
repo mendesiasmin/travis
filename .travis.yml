@@ -2,15 +2,19 @@ language: ruby
 services:
 - mysql
 before_script:
-- cp config/database.yml.travis config/database.yml
+- cp 2017.1-SIGS/SIGS/config/database.yml.travis 2017.1-SIGS/SIGS/config/database.yml
 - mysql -e 'create database myapp_test;' -uroot
 script:
-- bundle exec spring binstub --all
+- cd 2017.1-SIGS/SIGS
 - bundle install
 - bundle exec rake db:load_config
 - bundle exec rake db:create
 - bundle exec rake db:migrate
+- rake cucumber
 - bundle exec rspec
+- rubocop
+after_sucess:
+- coveralls push
 rvm:
 - 2.3.1
 notifications:
@@ -20,3 +24,4 @@ notifications:
 branches:
   only:
   - master
+  - /.*/
